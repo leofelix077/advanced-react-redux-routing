@@ -1,0 +1,3 @@
+rootProject.name = 'adv_react_redux_routing'
+
+include ':app'
