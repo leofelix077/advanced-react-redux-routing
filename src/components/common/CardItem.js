@@ -3,10 +3,10 @@ import { View } from "react-native"
 
 
 const CardItem = (props) => {
-    const { children } = props;
+    const { children, style } = props;
     const { containerStyle } = styles
     return (
-        <View style={containerStyle}>
+        <View style={[containerStyle, style]}>
             {children}
         </View>
     )
@@ -21,9 +21,9 @@ const styles = {
         flexDirection: "row",
         borderColor: "#ddd",
         position: "relative",
-        BorderRadius:5,
-        borderBottomLeftRadius:15,
-        borderBottomRightRadius:15,
+        BorderRadius: 5,
+        borderBottomLeftRadius: 15,
+        borderBottomRightRadius: 15,
 
     }
 }
