@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import firebase from "firebase"
 import { View } from 'react-native';
 import { Provider } from "react-redux"
-import { createStore } from "redux"
-import { Header } from "./components/common"
-import reducers from "./reducers"
-import firebase from "firebase"
+import ReduxThunk from "redux-thunk"
+import { createStore, applyMiddleware } from "redux"
+import reducers from "./services/reducers"
+import Router from "./Router"
 
 class App extends Component {
 
@@ -14,7 +15,7 @@ class App extends Component {
       authDomain: "react-native-routes.firebaseapp.com",
       databaseURL: "https://react-native-routes.firebaseio.com",
       projectId: "react-native-routes",
-      storageBucket: "",
+      storageBucket: "react-native-routes.appspot.com",
       messagingSenderId: "599614273503"
     };
     firebase.initializeApp(config);
@@ -22,9 +23,9 @@ class App extends Component {
 
   render() {
     return (
-      <Provider store={createStore(reducers)}>
+      <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
         <View style={{ flex: 1 }}>
-          <Header headerText="React-Redux Advanced" />
+          <Router/>
         </View>
       </Provider>
     );
